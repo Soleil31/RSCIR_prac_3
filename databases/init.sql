@@ -1,42 +1,32 @@
-CREATE DATABASE IF NOT EXISTS appDB;
+CREATE DATABASE IF NOT EXISTS dataDB;
 CREATE USER IF NOT EXISTS 'user'@'%' IDENTIFIED BY 'password';
-GRANT SELECT,UPDATE,INSERT ON appDB.* TO 'user'@'%';
+GRANT SELECT,UPDATE,INSERT,DELETE ON dataDB.* TO 'user'@'%';
 FLUSH PRIVILEGES;
 
-USE appDB;
+USE dataDB;
 CREATE TABLE IF NOT EXISTS users (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(10) NOT NULL,
+    email VARCHAR(20) NOT NULL,
+    phone VARCHAR(15) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS items (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(10) NOT NULL,
+    count VARCHAR(15) NOT NULL,
+    price VARCHAR(15) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS users_auth (
   ID INT(11) NOT NULL AUTO_INCREMENT,
-  name VARCHAR(20) NOT NULL,
-  surname VARCHAR(40) NOT NULL,
+  username VARCHAR(20) NOT NULL,
+  password VARCHAR(40) NOT NULL,
   PRIMARY KEY (ID)
 );
 
-INSERT INTO users (name, surname)
-SELECT * FROM (SELECT 'Alex', 'Rover') AS tmp
+INSERT INTO users_auth (username, password)
+SELECT * FROM (SELECT 'Alex', 'ruA6grw1r8x.E') AS tmp
 WHERE NOT EXISTS (
-    SELECT name FROM users WHERE name = 'Alex' AND surname = 'Rover'
-) LIMIT 1;
-
-INSERT INTO users (name, surname)
-SELECT * FROM (SELECT 'Bob', 'Marley') AS tmp
-WHERE NOT EXISTS (
-    SELECT name FROM users WHERE name = 'Bob' AND surname = 'Marley'
-) LIMIT 1;
-
-INSERT INTO users (name, surname)
-SELECT * FROM (SELECT 'Alex', 'Rover') AS tmp
-WHERE NOT EXISTS (
-    SELECT name FROM users WHERE name = 'Alex' AND surname = 'Rover'
-) LIMIT 1;
-
-INSERT INTO users (name, surname)
-SELECT * FROM (SELECT 'Kate', 'Yandson') AS tmp
-WHERE NOT EXISTS (
-    SELECT name FROM users WHERE name = 'Kate' AND surname = 'Yandson'
-) LIMIT 1;
-
-INSERT INTO users (name, surname)
-SELECT * FROM (SELECT 'Lilo', 'Black') AS tmp
-WHERE NOT EXISTS (
-    SELECT name FROM users WHERE name = 'Lilo' AND surname = 'Black'
+    SELECT username FROM users_auth WHERE username = 'Alex' AND password = 'ruA6grw1r8x.E'
 ) LIMIT 1;
