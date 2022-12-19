@@ -25,6 +25,15 @@ CREATE TABLE IF NOT EXISTS users_auth (
   PRIMARY KEY (ID)
 );
 
+CREATE TABLE IF NOT EXISTS files (
+    ID INT(11) NOT NULL  AUTO_INCREMENT,
+    content LONGBLOB NOT NULL,
+    author VARCHAR(32) NOT NULL,
+    file_name VARCHAR(256) NOT NULL,
+    `type` VARCHAR(256) NOT NULL,
+    PRIMARY KEY (ID)
+);
+
 INSERT INTO users_auth (username, password)
 SELECT * FROM (SELECT 'Alex', 'ruA6grw1r8x.E') AS tmp
 WHERE NOT EXISTS (

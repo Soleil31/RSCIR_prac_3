@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="StackTest" file="/var/www/html/test/test.php" tests="3" assertions="107" errors="0" failures="1" skipped="0" time="0.148646">
+    <testcase name="testName" class="StackTest" classname="StackTest" file="/var/www/html/test/test.php" line="29" assertions="7" time="0.142324">
+      <failure type="PHPUnit\Framework\ExpectationFailedException">StackTest::testName
+Failed asserting that false is true.
+
+/var/www/html/test/test.php:35
+</failure>
+    </testcase>
+    <testcase name="testEmail" class="StackTest" classname="StackTest" file="/var/www/html/test/test.php" line="39" assertions="50" time="0.003358"/>
+    <testcase name="testPhone" class="StackTest" classname="StackTest" file="/var/www/html/test/test.php" line="50" assertions="50" time="0.002964"/>
+  </testsuite>
+</testsuites>
